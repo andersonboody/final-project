@@ -1,0 +1,29 @@
+.main__footer {
+  padding: var(--section-padding-y) var(--container-padding-x);
+
+  border-top: var(--border-top);
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-accent-text);
+
+  @include mobile {
+    flex-direction: column;
+    text-align: center;
+    row-gap: 5px;
+    font-size: 12px;
+  }
+
+  &-elem--start {
+    text-align: start;
+    @include mobile {
+      text-align: center;
+    }
+  }
+  &-elem--end {
+    text-align: end;
+    @include mobile {
+      text-align: center;
+    }
+  }
+}
+

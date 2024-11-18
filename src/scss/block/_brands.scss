@@ -1,0 +1,51 @@
+.brands {
+  &__container {
+    @include mobile {
+      display: none;
+    }
+  }
+  &__button {
+    margin-left: 20px;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &__swiper {
+    height: 110px;
+    @include mobile-above {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      height: 72px;
+    }
+  }
+}
+.brand__card {
+  height: 72px;
+  
+  .brand__icon {
+    width: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &::after {
+      content: '';
+      background: url(../img/brands/go.png) no-repeat;
+      min-width: 40px;
+      min-height: 40px;
+    }
+  }
+  &:nth-child(n+9) {
+    display: none;
+  }
+  @include tablet {
+    &:nth-child(n+7) {
+      display: none;
+    }
+  }
+}
+
+

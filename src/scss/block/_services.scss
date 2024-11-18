@@ -1,0 +1,115 @@
+.services {
+  padding: var(--section-padding-y) var(--container-padding-x);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 30px;
+      position: absolute;
+      top: 0;
+      left: -20px;
+      background-color: var(--color-accent);
+      border-top-right-radius: 50px;
+      border-bottom-right-radius: 50px;
+    }
+  }
+  &__buttons-group {
+    display: flex;
+    column-gap: 10px;
+
+
+    @include tablet {
+      display: none;
+    }
+  }
+  &__button {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    background-color: var(--color-gray);
+
+    &--application::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background-image: url(../img/repair.png);
+      margin-left: 10px;
+    }
+    &--status::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background-image: url(../img/checkstatus.png);
+      margin-left: 10px;
+    }
+  }
+  
+  &__list {
+    padding-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+    scrollbar-width: none;
+    column-gap: 10px;
+
+    @include tablet {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__link {
+    white-space: nowrap;
+    padding: 10px 15px;
+    display: inline-block;
+    color: var(--color-accent-text);
+    &--active {
+      border: var(--border-accent);
+      border-radius: 5px;
+      background-color: var(--color-light);
+    }
+  }
+
+  &__description {
+    padding-top: 20px;
+    display: flex;
+    column-gap: 20px;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  &__paragraph {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    @include tablet {
+      overflow: hidden;
+      max-height: 115px;
+    }
+
+    @include mobile {
+      max-height: 100px;
+      max-width: 382px;
+    }
+  }
+  &__img {
+    max-width: 532px;
+
+    @include desktop {
+      max-width: 382px;
+      max-height: 221px;
+    }
+    @include mobile {
+      width: 100%;
+    }
+  }
+}

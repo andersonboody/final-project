@@ -1,0 +1,74 @@
+.header {
+  @include desktop-above {
+    display: none;
+  }
+
+  background-color: var(--color-light);
+  border-bottom: var(--border-accent);
+  max-width: 1120px;
+  
+  &__container {
+    padding: 10px var(--container-padding-x);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
+    &-menu {
+      background-image: url(../img/burger.png);
+    }
+    &-vertical-line {
+      display: inline-block;
+      width: 2px;
+      height: 32px;
+      background-color: var(--color-gray-light);
+      
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  &__services {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    &--hide {
+      @include mobile {
+        display: none;
+      }
+    }
+    &--with-line::before {
+      content: '';
+      display: inline-block;
+      width: 2px;
+      height: 32px;
+      background-color: var(--color-gray-light);
+    }
+  }
+  &__button{
+    &--call {
+      background-image: url(../img/call.png);
+    }
+    &--chat{
+      background-image: url(../img/chat.png);
+    }
+    &--profile {
+      background-image: url(../img/profile.png);
+    }
+    &--repair {
+      background-image: url(../img/repair.png);
+    }
+    &--status {
+      background-image: url(../img/checkstatus.png);
+    }
+  } 
+}

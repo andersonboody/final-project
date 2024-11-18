@@ -1,0 +1,62 @@
+.repair{
+  &__container {
+    @include mobile {
+      display: none;
+    }
+  }
+  &__card {
+    height: 160px;
+
+    @include tablet {
+      &:nth-child(n+4) {
+        display: none;
+      }
+    }
+
+    @include mobile {
+      width: 240px;
+    }
+
+    &-title {
+      font-weight: 500;
+      width: 240px;
+      display: flex;
+      justify-content: space-between;
+
+      &::after {
+        content: '';
+        display: inline-block;
+        background: url(../img/brands/go.png) no-repeat;
+        min-width: 40px;
+        min-height: 40px;
+        align-self: flex-end;
+      }
+    }
+  }
+  &__button {
+    margin-left: 20px;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &__swiper {
+    height: 220px;
+    @include mobile-above {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      height: 160px;
+    }
+  }
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: #B5B6BC;
+  }
+}
+

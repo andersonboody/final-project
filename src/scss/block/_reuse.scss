@@ -1,0 +1,39 @@
+.button__next {
+  display: flex;
+  align-items: center;
+  border: none;
+  width: 145px;
+}
+.button__next--arrow::before,
+.button__next--open::before,
+.button__next--close::before {
+  content: "";
+  display: inline-block;
+  background-image: url(../img/arrow.png);
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  transform: rotate(0);
+}
+.button__next--close::before {
+  transform: rotate(180deg);
+}
+
+.title {
+  padding-left: var(--container-padding-x);
+  height: 56px;
+  display: flex; //
+  align-items: center; //
+  border-top: var(--border-top);
+  font-weight: 100;
+  color: var(--color-accent-text);
+  text-transform: uppercase;
+  background: var(--gradient);
+}
+.card {
+  display: flex;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  background-color: var(--color-light);
+  border: var(--border-card);
+}
