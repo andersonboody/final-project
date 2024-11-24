@@ -1,5 +1,7 @@
 .brands {
+  padding-top: 20px;
   &__container {
+    padding: 30px 20px 10px 20px;
     @include mobile {
       display: none;
     }

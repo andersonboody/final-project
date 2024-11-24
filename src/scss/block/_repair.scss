@@ -1,5 +1,7 @@
 .repair{
+  padding-top: 20px;
   &__container {
+    padding: 30px 20px 10px 20px;
     @include mobile {
       display: none;
     }
@@ -50,13 +52,6 @@
     &::after {
       height: 160px;
     }
-  }
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    line-height: 20px;
-    font-size: 12px;
-    background-color: #B5B6BC;
   }
 }
 

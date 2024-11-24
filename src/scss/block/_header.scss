@@ -6,6 +6,7 @@
   background-color: var(--color-light);
   border-bottom: var(--border-accent);
   max-width: 1120px;
+  margin: 0 auto;
   
   &__container {
     padding: 10px var(--container-padding-x);
@@ -17,9 +18,7 @@
     display: flex;
     align-items: center;
     column-gap: 20px;
-    &-menu {
-      background-image: url(../img/burger.png);
-    }
+
     &-vertical-line {
       display: inline-block;
       width: 2px;
@@ -54,21 +53,4 @@
       background-color: var(--color-gray-light);
     }
   }
-  &__button{
-    &--call {
-      background-image: url(../img/call.png);
-    }
-    &--chat{
-      background-image: url(../img/chat.png);
-    }
-    &--profile {
-      background-image: url(../img/profile.png);
-    }
-    &--repair {
-      background-image: url(../img/repair.png);
-    }
-    &--status {
-      background-image: url(../img/checkstatus.png);
-    }
-  } 
 }

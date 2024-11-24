@@ -22,9 +22,7 @@
   &__buttons-group {
     display: flex;
     column-gap: 10px;
-
-
-    @include tablet {
+    @include desktop {
       display: none;
     }
   }
@@ -34,11 +32,11 @@
     align-items: center;
     background-color: var(--color-gray);
 
-    &--application::after {
+    &--repair::after {
       content: "";
       width: 40px;
       height: 40px;
-      background-image: url(../img/repair.png);
+      background-image: url(../img/repair.png);;
       margin-left: 10px;
     }
     &--status::after {

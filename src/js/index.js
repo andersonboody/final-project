@@ -1,13 +1,15 @@
 import '@scss/styles.scss'
 const brandsOpen = document.getElementById('brandsOpenAll')
 const repairOpen = document.getElementById('repairOpenAll')
-const modalFeedback = document.getElementById('opanModalFeedback')
-const modalCall = document.getElementById('openModalCall')
+const menuIsOpen = document.getElementById('openMenu')
+const menuIsClose = document.getElementById('closeMenu')
 const modalsAll = document.querySelector('#modals')
+const modalFeedback = document.getElementById('openModalFeedback')
 const modalFeedbackTatlet = document.getElementById('openModalFedbackTablet')
+const callFromAside = document.getElementById('asideCall')
+const messageFromAside = document.getElementById('asideMessage')
+const modalCall = document.getElementById('openModalCall')
 const modalCallTatlet = document.getElementById('openModalCallTablet')
-const burgerMenu = document.getElementById('openBurgerMenu')
-const asideClose = document.getElementById('asideCloseMenu')
 let countChildBrands
 let countChildRepair
 
@@ -19,11 +21,11 @@ if (screen.width > 1024) {
   countChildRepair = 4
 }
 
-burgerMenu.addEventListener('click', function () {
+menuIsOpen.addEventListener('click', function (evt) {
   openAside()
 })
 
-asideClose.addEventListener('click', function () {
+menuIsClose.addEventListener('click', function () {
   openAside()
 })
 
@@ -38,7 +40,25 @@ repairOpen.addEventListener('click', function () {
 modalFeedback.addEventListener('click', function () {
   openModal(
     '.modal__feedback',
-    '.modal__close-feedback',
+    '#modalCloseFeedback',
+    'modal__feedback--close',
+    'modal__feedback--open'
+  )
+})
+
+callFromAside.addEventListener('click', function () {
+  openModal(
+    '.modal__feedback',
+    '#modalCloseFeedback',
+    'modal__feedback--close',
+    'modal__feedback--open'
+  )
+})
+
+messageFromAside.addEventListener('click', function () {
+  openModal(
+    '.modal__feedback',
+    '#modalCloseFeedback',
     'modal__feedback--close',
     'modal__feedback--open'
   )
@@ -47,7 +67,7 @@ modalFeedback.addEventListener('click', function () {
 modalFeedbackTatlet.addEventListener('click', function () {
   openModal(
     '.modal__feedback',
-    '.modal__close-feedback',
+    '#modalCloseFeedback',
     'modal__feedback--close',
     'modal__feedback--open'
   )
@@ -56,7 +76,7 @@ modalFeedbackTatlet.addEventListener('click', function () {
 modalCall.addEventListener('click', function () {
   openModal(
     '.modal__call',
-    '.modal__close-call',
+    '#modalCloseCall',
     'modal__call--close',
     'modal__call--open'
   )
@@ -64,7 +84,7 @@ modalCall.addEventListener('click', function () {
 modalCallTatlet.addEventListener('click', function () {
   openModal(
     '.modal__call',
-    '.modal__close-call',
+    '#modalCloseCall',
     'modal__call--close',
     'modal__call--open'
   )
@@ -84,16 +104,15 @@ new Swiper('.swiper', {
 
 /**
  * Скрывает либо отображает элементы
- * @param {*} classBlock - передать название блока
+ * @param {*} idButton - передать id раскрывающие кнопки
  * @param {*} classElem - передать класс элемента
  * @param {*} cardNumber - колличество элементов
  */
-
-function hideOrOpen(classBlock, classElem, cardNumber) {
-  const isOpen = classBlock.classList.contains('button__next--open')
+function hideOrOpen(idButton, classElem, cardNumber) {
+  const isOpen = idButton.classList.contains('button-next--open')
   const displayStyle = isOpen ? 'flex' : 'none'
-  const addClass = isOpen ? 'button__next--close' : 'button__next--open'
-  const removeClass = isOpen ? 'button__next--open' : 'button__next--close'
+  const addClass = isOpen ? 'button-next--close' : 'button-next--open'
+  const removeClass = isOpen ? 'button-next--open' : 'button-next--close'
   const replaseText = isOpen ? 'Скрыть' : 'Показать все'
 
   document
@@ -101,21 +120,21 @@ function hideOrOpen(classBlock, classElem, cardNumber) {
     .forEach((elem) => {
       elem.style.display = displayStyle
     })
-  classBlock.classList.remove(removeClass)
-  classBlock.classList.add(addClass)
-  classBlock.textContent = replaseText
+  idButton.classList.remove(removeClass)
+  idButton.classList.add(addClass)
+  idButton.textContent = replaseText
 }
 
 /**
  * Отображает модальное окно
  * @param {*} classModal - паредать блок модального окна
- * @param {*} classButtonClose - передать блок закрывающие кнопки модального окна
+ * @param {*} idButtonClose - передать id закрывающие кнопки модального окна
  * @param {*} modalHide - передать класс открывающий модальное окно
  * @param {*} modalOpen - передать класс закрывающий модальное окно
  */
-function openModal(classModal, classButtonClose, modalHide, modalOpen) {
+function openModal(classModal, idButtonClose, modalHide, modalOpen) {
   const modal = modalsAll.querySelector(classModal)
-  const modalClose = modalsAll.querySelector(classButtonClose)
+  const modalClose = modalsAll.querySelector(idButtonClose)
 
   modal.classList.add(modalOpen)
   modal.classList.remove(modalHide)
@@ -123,6 +142,12 @@ function openModal(classModal, classButtonClose, modalHide, modalOpen) {
   modalClose.addEventListener('click', function () {
     modal.classList.add(modalHide)
     modal.classList.remove(modalOpen)
+  })
+  modalsAll.addEventListener('click', function (evt) {
+    if(!modal.contains(evt.target) && !evt.target.closest(classModal)) {
+      modal.classList.add(modalHide)
+      modal.classList.remove(modalOpen)
+    }
   })
 }
 
@@ -137,4 +162,11 @@ function openAside() {
 
   asideMenu.classList.add(addClass)
   asideMenu.classList.remove(removeClass)
+
+  document.addEventListener("click", function(evt) {
+    if(!evt.target.closest(".aside__container") && asideMenu.contains(evt.target)) {
+      asideMenu.classList.remove('aside--visible')
+      asideMenu.classList.add('aside--hide')
+    }
+  })
 }

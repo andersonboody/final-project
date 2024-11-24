@@ -9,6 +9,8 @@
   href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
   />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <link rel="stylesheet" href="./scss/styles.css">
+  <script src="./js/index.js" defer></script>
 
 </head>
 <body>
@@ -16,12 +18,12 @@
     <div class="aside__container">
       <div class="aside__header">
         <div class="aside__header-left">
-          <button class="aside__close" type="button" id="asideCloseMenu"></button>
+          <button class="button button--close" type="button" id="closeMenu"></button>
           <div class="aside__header-logo logo">
             <a href="#"><img src="./img/Group.png" alt="CPS"></a>
           </div>
         </div>
-        <div class="aside__header-search"><button class="aside__header-search"></button></div>
+        <div class="aside__header-search"><button class="button button-search"></button></div>
       </div>
       <div class="aside__menu">
         <ul class="aside__menu-list">
@@ -37,16 +39,22 @@
         <div class="aside__footer">
           <div class="aside__footer-contact">
             <div class="aside__footer-icon">
-              <button class="aside__footer-button aside__footer-button--call"></button>
-              <button class="aside__footer-button aside__footer-button--message"></button>
-              <button class="aside__footer-button aside__footer-button--profile"></button>
+              <button 
+                class="button button--call"
+                id="asideCall"
+                type="button"></button>
+              <button 
+                class="button button--message"
+                id="asideMessage"
+                type="button"></button>
+              <button class="button button--profile"></button>
             </div>
             <a href="#" class="aside__footer-email">mail@cps.com</a>
             <a href="#" class="aside__footer-number">8 800 890 8900</a>
             <div>
-              <button class="aside__footer-lang aside__footer-lang--active">RU</button>
-              <button class="aside__footer-lang">EN</button>
-              <button class="aside__footer-lang">CH</button>
+              <button class="button button-lang button-lang--active">RU</button>
+              <button class="button button-lang">EN</button>
+              <button class="button button-lang">CH</button>
             </div>
           </div>
         </div>
@@ -56,23 +64,20 @@
   <header class="header">
     <div class="header__container">
       <div class="header__left">
-        <button class="header__left-menu" id="openBurgerMenu"></button>
+        <button class="button button--menu" id="openMenu"></button>
         <span class="header__left-vertical-line"></span>
         <a href="#" class="header__left-logo logo"><img src="./img/Group.png" alt="CPS"></a>
       </div>
       <div class="header__right">
         <div class="header__services header__services--hide">
-          <button class="header__button header__button--call">
-          </button>
-          <button class="header__button header__button--chat">
-          </button>
-          <button class="header__button header__button--profile">
-          </button>
+          <button class="button button--call"></button>
+          <button class="button button--message"></button>
+          <button class="button button--profile"></button>
         </div>
         <div class="header__services header__services--with-line">
-          <button class="header__button header__button--repair" type="button" id="openModalFedbackTablet">
+          <button class="button button--repair" type="button" id="openModalFedbackTablet">
           </button>
-          <button class="header__button header__button--status" type="button" id="openModalCallTablet">
+          <button class="button button--status" type="button" id="openModalCallTablet">
           </button>
         </div>
       </div>
@@ -84,11 +89,11 @@
         <h1 class="services__title">Услуги и сервисы</h1>
         <div class="services__buttons-group">
           <button 
-            class="services__button services__button--application" 
+            class="button services__button services__button--repair" 
             type="button"
-            id="opanModalFeedback">Оставить заявку</button>
+            id="openModalFeedback">Оставить заявку</button>
           <button 
-            class="services__button services__button--status" 
+            class="button services__button services__button--status" 
             type="button"
             id="openModalCall">Статус ремонта</button>
         </div>  
@@ -112,7 +117,7 @@
             что к нам обращаются по рекомендациям и, в свою очередь, советуют 
             нас родным и близким.</p>
           </div>
-          <button class="button__next button__next--arrow">Читать далее</button>
+          <button class="button button-next button-next--arrow">Читать далее</button>
         </div>
         <img 
         src="./img/01.png" 
@@ -161,7 +166,7 @@
           <a href="#" class="brand__icon"><img src="./img/brands/bosch.png" alt="bosch"></a>
         </div>
       </div>
-      <button class="brands__button button__next button__next--open" id="brandsOpenAll">Показать все</button>
+      <button class="button button-next button-next--open" id="brandsOpenAll">Показать все</button>
 
       <div class="brands__swiper swiper">
         <div class="brands__swiper-wrapper swiper-wrapper">
@@ -227,7 +232,7 @@
           <a href="#" class="repair__card-title">Ремонт мониторов</a>
         </div>
       </div>
-      <button class="repair__button button__next button__next--open" id="repairOpenAll">Показать все</button>
+      <button class="button button-next button-next--open" id="repairOpenAll">Показать все</button>
 
       <div class="repair__swiper swiper">
         <div class="repair__swiper-wrapper swiper-wrapper">
@@ -259,10 +264,164 @@
       <h3 class="price__title title">
         Цены на услуги
       </h3>
-      <div class="price__conteiner container">
-        <div class="price__table"></div>
-        <p>Все цены указаны с учетом НДС. Стоимость ремонта указана на единичную услугу. Для получения коммерческого предложения на постоянное обслуживание, оставьте заявку.</p>
-        <a href="#">Получить коммерческое предложение</a>
+      <div class="price__container">
+        <div class="price__table">
+          <div class="price__table-header">
+            <p>Ремонтные услуги</p>
+            <p>Цена</p>
+            <p>Срок</p>
+          </div>
+          <div class="price__table-body">
+            <div class="price__table-row">
+              <p>Диагностика</p>
+              <p>Бесплатно</p>
+              <p>30 мин</p>
+              <button class="button button--order">Заказать</button>
+            </div>
+            <div class="price__table-row">
+              <p>Замена дисплея</p>
+              <p>1 000 ₽</p>
+              <p>30-120 мин</p>
+              <button class="button button--order">Заказать</button>
+            </div>
+            <div class="price__table-row">
+              <p>Замена полифонического динамика</p>
+              <p>1 000 ₽</p>
+              <p>30-120 мин</p>
+              <button class="button button--order">Заказать</button>
+            </div>
+            <div class="price__table-row">
+              <p>Тестирование с выдачей технического заключения</p>
+              <p>1 000 ₽</p>
+              <p>30-120 мин</p>
+              <button class="button button--order">Заказать</button>
+            </div>
+            <div class="price__table-row">
+              <p>Замена программного обеспечения</p>
+              <p>1 000 ₽</p>
+              <p>30-120 мин</p>
+              <button class="button button--order">Заказать</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="price__swiper swiper">
+          <div class="price__swiper-wrapper swiper-wrapper">
+            <div class="price__swiper-slide swiper__slide swiper-slide">
+              <div class="price__card card">
+                <p>
+                  <span class="price__card-header">Ремонтные услуги</span>
+                  <br>
+                  Диагностика
+                </p>
+                <p>
+                  <span class="price__card-header">Цена</span>
+                  <br>
+                  Бесплатно
+                </p>
+                <div class="price__card-details">
+                  <p>
+                    <span class="price__card-header">Срок</span>
+                    <br>
+                    30 мин
+                  </p>
+                  <button class="button button--order">Заказать</button>
+                </div>
+              </div>
+            </div>
+            <div class="price__swiper-slide swiper__slide swiper-slide">
+              <div class="price__card card">
+                <p>
+                  <span class="price__card-header">Ремонтные услуги</span>
+                  <br>
+                  Замена дисплея
+                </p>
+                <p>
+                  <span class="price__card-header">Цена</span>
+                  <br>
+                  1 000 ₽
+                </p>
+                <div class="price__card-details">
+                  <p>
+                    <span class="price__card-header">Срок</span>
+                    <br>
+                    30-120 мин
+                  </p>
+                  <button class="button button--order">Заказать</button>
+                </div>
+              </div>
+            </div>
+            <div class="price__swiper-slide swiper__slide swiper-slide">
+              <div class="price__card card">
+                <p>
+                  <span class="price__card-header">Ремонтные услуги</span>
+                  <br>
+                  Замена полифонического динамика
+                </p>
+                <p>
+                  <span class="price__card-header">Цена</span>
+                  <br>
+                  1 000 ₽
+                </p>
+                <div class="price__card-details">
+                  <p>
+                    <span class="price__card-header">Срок</span>
+                    <br>
+                    30-120 мин
+                  </p>
+                  <button class="button button--order">Заказать</button>
+                </div>
+              </div>
+            </div>
+            <div class="price__swiper-slide swiper__slide swiper-slide">
+              <div class="price__card card">
+                <p>
+                  <span class="price__card-header">Ремонтные услуги</span>
+                  <br>
+                  Тестирование с выдачей технического заключения
+                </p>
+                <p>
+                  <span class="price__card-header">Цена</span>
+                  <br>
+                  1 000 ₽
+                </p>
+                <div class="price__card-details">
+                  <p>
+                    <span class="price__card-header">Срок</span>
+                    <br>
+                    30-120 мин
+                  </p>
+                  <button class="button button--order">Заказать</button>
+                </div>
+              </div>
+            </div>
+            <div class="price__swiper-slide swiper__slide swiper-slide">
+              <div class="price__card card">
+                <p>
+                  <span class="price__card-header">Ремонтные услуги</span>
+                  <br>
+                  Замена программного обеспечения
+                </p>
+                <p>
+                  <span class="price__card-header">Цена</span>
+                  <br>
+                  1 000 ₽
+                </p>
+                <div class="price__card-details">
+                  <p>
+                    <span class="price__card-header">Срок</span>
+                    <br>
+                    30-120 мин
+                  </p>
+                  <button class="button button--order">Заказать</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <p class="price__text">Все цены указаны с учетом НДС. Стоимость ремонта указана на единичную услугу. Для получения коммерческого предложения на постоянное обслуживание, оставьте заявку.</p>
+        <a href="#" class="price__link">Получить коммерческое предложение</a>
       </div>
     </section>
 
@@ -277,11 +436,11 @@
 
   <section class="modals" id="modals">
     <div class="modal__feedback modal__feedback--close modal">
-      <button class="modal__close modal__close-feedback"></button>
+      <button class="button modal--close" id="modalCloseFeedback"></button>
       <div class="modal__title">
         <h1>Обратная связь</h1>
       </div>
-      <div class="modal__forms">
+      <form class="modal__forms">
         <div class="modal__row">
           <input type="text" class="modal__input" placeholder="Имя">
         </div>
@@ -298,15 +457,15 @@
           персональных данных</span> и соглашаетесь с нашей<br>
         <span  class="modal__text--color">политикой конфиденциальности</span></p>
         <button class="modal__button">ОТПРАВИТЬ</button>
-      </div>
+        </form>
     </div>
 
     <div class="modal__call modal__call--close modal">
-      <button class="modal__close modal__close-call"></button>
+      <button class="button modal--close" id="modalCloseCall"></button>
       <div class="modal__title">
         <h1>Заказать звонок</h1>
       </div>
-      <div class="modal__forms">
+      <form class="modal__forms">
         <div class="modal__row">
           <input type="text" class="modal__input" placeholder="Телефон">
         </div>
@@ -314,8 +473,9 @@
           персональных данных</span> и соглашаетесь с нашей<br>
         <span  class="modal__text--color">политикой конфиденциальности</span></p>
         <button class="modal__button">ОТПРАВИТЬ</button>
-      </div>
+        </form>
     </div>
   </section>
+
 </body>
 </html>

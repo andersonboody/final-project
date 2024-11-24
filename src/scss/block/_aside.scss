@@ -27,7 +27,7 @@
     min-width: 216px;
     background-color: var(--color-light);
     
-    @include tablet {
+    @include desktop {
       box-shadow: var(--shadow);
     }
     
@@ -51,14 +51,6 @@
     }
   }
 
-  &__close {
-    display: none;
-    @include tablet {
-      display: inline-block;
-      background-image: url(../img/close.png);
-    }
-  }
-
   &__menu {
     padding: 0px 20px 20px 20px;
     height: 90vh;
@@ -66,9 +58,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-     @include mobile {
-      height: auto;
-     }
 
     &-list {
       display: flex;
@@ -114,33 +103,12 @@
       display: flex;
       column-gap: 15px;
     }
-    &-button {
-      &--call {
-        background-image: url(../img/call.png);
-        background-repeat: no-repeat;
-      }
-      &--message {
-        background-image: url(../img/chat.png);
-        background-repeat: no-repeat;
-      }
-      &--profile {
-        background-image: url(../img/profile.png);
-        background-repeat: no-repeat;
-      }
-    }
     &-email {
       font-weight: 500;
     }
     &-number {
       font-size: 20px;
       font-weight: 700;
-    }
-    &-lang{
-      width: 25px;
-      height: 24px;
-    }
-    &-lang--active {
-      color: var(--color-accent-text);
     }
   }
 }

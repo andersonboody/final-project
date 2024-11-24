@@ -1,0 +1,90 @@
+.button {
+  border: none;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  font-weight: 500;
+  background-repeat: no-repeat;
+
+  &--close {
+    display: none;
+    @include desktop {
+      display: inline-block;
+      background-image: url(../img/close.png);
+    }
+  }
+
+  &--call {
+    background-image: url(../img/call.png);
+  }
+  &--message {
+    background-image: url(../img/chat.png);
+  }
+  &--profile {
+    background-image: url(../img/profile.png);
+  }
+  &--repair {
+    background-image: url(../img/repair.png);
+  }
+  &--status {
+    background-image: url(../img/checkstatus.png);
+  }
+  &--menu {
+    background-image: url(../img/burger.png);
+  }
+
+  &-lang{
+    width: 25px;
+    height: 24px;
+
+    &--active {
+      color: var(--color-accent-text);
+    }
+  }
+
+  &-next {
+    display: flex;
+    align-items: center;
+    border: none;
+    width: 145px;
+
+    &--arrow::before,
+    &--open::before,
+    &--close::before {
+      content: "";
+      display: inline-block;
+      background-image: url(../img/arrow.png);
+      width: 20px;
+      height: 20px;
+      margin: 10px;
+      transform: rotate(0);
+    }
+    &--close::before {
+      transform: rotate(180deg);
+    }
+    &--open {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  &--order {
+    width: 120px;
+    height: 32px;
+    background-color: var(--color-button-background);
+    border-radius: 50px;
+    color: var(--color-light);
+    text-transform: uppercase;
+
+    &::after {
+      content: "";
+      display: inline-block;
+      background-image: url(../img/dropdown.png);
+      width: 7px;
+      height: 10px;
+      margin-left: 10px;
+    }
+  }
+}
+

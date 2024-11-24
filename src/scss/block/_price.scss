@@ -1,5 +1,101 @@
 .price {
-  @include mobile {
-    display: none;
+  padding-top: 20px;
+  &__container {
+    padding: var(--section-padding-y) var(--container-padding-x);
+
+    @include mobile {
+      padding: 0px 0px 30px 0px;
+    }
+  }
+  &__table {
+    @include mobile {
+      display: none;
+    }
+    &-header,
+    &-row {
+      display: grid;
+      grid-template-columns: 348px 74px 100px 120px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    &-row {
+      &:not(:last-child) {
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          margin: 0 20px;
+          border-bottom: var(--border-card);
+          width: 96%;
+          max-width: 96%;
+        }
+      }
+    }
+
+    &-body {
+      background-color: var(--color-light);
+      border-radius: var(--border-radius);
+    }
+  }
+
+  &__text {
+    max-width: 420px;
+    margin-top: 20px;
+    font-size: 12px;
+    @include mobile {
+      margin-top: 0px;
+      padding: 0px var(--container-padding-x);
+    }
+  }
+
+  &__link {
+    margin-top: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    &::after {
+      content: "";
+      display: inline-block;
+      background-image: url(../img/line.svg);
+      background-repeat: no-repeat;
+      width: 7px;
+      height: 10px;
+      margin-left: 10px;
+    }
+    @include mobile {
+      padding: 0px var(--container-padding-x);
+      font-size: 13px;
+    }
+  }
+  &__swiper {
+    height: 240px;
+    @include mobile-above {
+      display: none;
+    }
+  }
+  &__card {
+    height: 190px;
+    padding: 10px;
+    background-color: var(--color-light);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: none;
+
+    &-header {
+      color: var(--color-accent-text);
+      font-size: 12px;
+    }
+    &-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 }
